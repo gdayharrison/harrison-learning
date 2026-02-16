@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <h1>blablacar bus clicker</h1>
+    <h2 id='scoreBox'></h2>
+    <h3 id='subScore'>-1</h3>
+    <style>
+        #balloon{
+            /* position:absolute; */
+            -webkit-transition:all 0.2s;
+            height:1000px;
+     float:right
+       }
+       #subScore{
+        /* font-size: 100px; */
+        display: inline-block;
+       }
+    </style>
+    <img id='balloon' src='https://newsroom.blablacar.com/wp-content/uploads/2019/07/19.jpg'>
+    <script>
+        balloon.addEventListener('click',clickedIt);
+        var score = 0, count = 0;
+        function clickedIt(){
+            score=score + 1;
+            scoreBox.innerHTML='score:'+score;
+            // balloon.style.height='1px';
+            subScore.innerHTML='-1:'+score;
+        }
+        scoreBox.addEventListener('click',clickedscore);
+        function clickedscore(){
+            score--;
+            scoreBox.innerHTML='score:'+score;
+            subScore.innerHTML='-1:'+score;
+            // balloon.style.height='1px';
+        }
+        subScore.addEventListener('click',clickedwhen);
+        function clickedwhen(){
+            score--;
+            subScore.innerHTML='-1:'+score;
+            // balloon.style.height='1px';
+            scoreBox.innerHTML='score:'+score;
+        }
+   </script>
+
+</html>
