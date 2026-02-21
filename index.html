@@ -8,14 +8,21 @@
             /* position:absolute; */
             -webkit-transition:all 0.2s;
             height:1000px;
-     float:right
+             float:right
        }
        #subScore{
         /* font-size: 100px; */
         display: inline-block;
        }
+       #hello {
+        cursor:not-allowed;
+        width: 50px;
+        height: 50px;
+       }
     </style>
     <img id='balloon' src='https://newsroom.blablacar.com/wp-content/uploads/2019/07/19.jpg'>
+    <div id="hello"></div>
+        
     <script>
         balloon.addEventListener('click',clickedIt);
         var score = 0, count = 0;
@@ -28,7 +35,7 @@
         scoreBox.addEventListener('click',clickedscore);
         function clickedscore(){
             score--;
-            scoreBox.innerHTML='score:'+score;
+            scoreBox.innerHTML='score booooooo:'+score;
             subScore.innerHTML='-1:'+score;
             // balloon.style.height='1px';
         }
@@ -38,6 +45,11 @@
             subScore.innerHTML='-1:'+score;
             // balloon.style.height='1px';
             scoreBox.innerHTML='score:'+score;
+        }
+        hello.addEventListener('click',clickedhow);
+        function clickedhow(){
+            score=score+1000;
+            scoreBox.innerHTML='you have found the secret button. your score will increace by 1000! score='+score;
         }
    </script>
 
