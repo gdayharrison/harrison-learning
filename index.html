@@ -17,14 +17,25 @@
     }
 
     #hello {
-        cursor: not-allowed;
+        /* cursor: not-allowed; */
         width: 50px;
         height: 50px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+
+    }
+
+    #youwon {
+        display: none;
+        /* <-- hide */
     }
 </style>
 <img id='balloon' src='https://newsroom.blablacar.com/wp-content/uploads/2019/07/19.jpg'>
+<img id="youwon" src="won.png">
 <div id="hello"></div>
 <div id="buy">buy button x2 £10</div>
+<div id="refresh">reset</div>
 <script>
     balloon.addEventListener('click', clickedIt);
     var score = 0, count = 0;
@@ -34,6 +45,10 @@
         scoreBox.innerHTML = 'score:' + score;
         // balloon.style.height='1px';
         subScore.innerHTML = '-1 from ' + score;
+        if (score >= 1000000) {
+            youwon.setAttribute('style', 'display:block') // <-- show
+            balloon.setAttribute('style', 'display:none')
+        }
     }
     buy.addEventListener('click', clickedknow);
     function clickedknow() {
@@ -63,5 +78,8 @@
         scoreBox.innerHTML = 'you have found the secret button. your score will increace by 1000! score=' + score;
     }
 </script>
+<audio controls autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 </html>
