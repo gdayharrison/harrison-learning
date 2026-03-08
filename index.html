@@ -17,7 +17,7 @@
     }
 
     #hello {
-        /* cursor: not-allowed; */
+        cursor: not-allowed;
         width: 50px;
         height: 50px;
         position: fixed;
@@ -30,9 +30,14 @@
         display: none;
         /* <-- hide */
     }
+
+    #youlost {
+        display: none;
+    }
 </style>
 <img id='balloon' src='https://newsroom.blablacar.com/wp-content/uploads/2019/07/19.jpg'>
 <img id="youwon" src="won.png">
+<img id="youlost" src="youlost.jpeg">
 <div id="hello"></div>
 <div id="buy">buy button x2 £10</div>
 <div id="refresh">reset</div>
@@ -48,6 +53,14 @@
         if (score >= 1000000) {
             youwon.setAttribute('style', 'display:block') // <-- show
             balloon.setAttribute('style', 'display:none')
+            const clickSound = new Audio("youwon.m4a");
+            clickSound.play();
+        }
+        if (score <= -1) {
+            youlost.setAttribute('style', 'display:block')
+            balloon.setAttribute('style', 'display:none')
+            const clickSound = new Audio("gameoversoundaffect.mp3");
+            clickSound.play();
         }
     }
     buy.addEventListener('click', clickedknow);
@@ -71,12 +84,19 @@
         subScore.innerHTML = '-1:' + score;
         // balloon.style.height='1px';
         scoreBox.innerHTML = 'score:' + score;
+        if (score <= -1) {
+            youlost.setAttribute('style', 'display:block')
+            subScore.setAttribute('style', 'display:none')
+            const clickSound = new Audio("gameoversoundaffect.mp3");
+            clickSound.play();
+        }
     }
     hello.addEventListener('click', clickedhow);
     function clickedhow() {
-        score = score + 1000;
+        score = score + 500000;
         scoreBox.innerHTML = 'you have found the secret button. your score will increace by 1000! score=' + score;
     }
+
 </script>
 <audio controls autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
